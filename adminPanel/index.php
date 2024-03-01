@@ -3,7 +3,7 @@
         include('query.php');
         include('header.php');
         if(!isset($_SESSION['adminEmail'])){
-                echo "<script>location.assign('signin.php')</script>";
+                echo "<script>location.assign('../login.php')</script>";
         }
         ?>
         <!-- Sale & Revenue Start -->
