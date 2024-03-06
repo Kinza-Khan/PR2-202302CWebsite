@@ -68,7 +68,6 @@ include('header.php');
 					echo "<script>alert('order placed successfully');
 							location.assign('index.php')</script>";
 			}
-
 			// invoice 
 			$invoice_query = $pdo->prepare("insert into invoice (u_id , u_name , u_email , total_products, total_amount ) values (:u_id , :u_name , :u_email , :total_products , :total_amount)");
 			$invoice_query->bindParam('u_id',$uId);

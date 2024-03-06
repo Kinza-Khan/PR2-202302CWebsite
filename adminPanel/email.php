@@ -17,13 +17,13 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'kinzaaptech@gmail.com';                     //SMTP username
-    $mail->Password   = '';   
+    $mail->Username   = 'taimoor.saleem2004@gmail.com';                     //SMTP username
+    $mail->Password   = 'fpxtomtypprxgmad';   
     $mail->SMTPSecure = "tls";                            //SMTP password
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('kinzaaptech@gmail.com', 'kinza khan');
+    $mail->setFrom('taimoor.saleem2004@gmail.com', 'taimoor');
     $mail->addAddress($_POST['userEmail']);     //Add a recipient
     
 
@@ -36,7 +36,15 @@ try {
   
 
     $mail->send();
-    echo 'Message has been sent';
+   
+
+    $email = $_POST['userEmail'];
+    $query = $pdo->prepare("update invoice set status = 'approved' where u_email = :email");
+    $query->bindParam('email', $email);
+    $query->execute();
+    echo '<script>alert("Message has been sent");location.assign("invoice.php")</script>';
+
+
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
