@@ -48,8 +48,41 @@ include('header.php');
                                 }
                                 ?>
                               </select>
+                              
                             </div>
-                            <button name ="addProduct" type="submit" class="btn btn-primary">Add Product</button>
+                            <div class="form-group">
+                              <label for="">Select Theater</label>
+                              <select class="form-control" name="tId" id="">
+                                <option>Select Category</option>
+                              <?php
+                              $query = $pdo->query("select * from theater");
+                              $allCategories = $query->fetchAll(PDO::FETCH_ASSOC);
+                              foreach( $allCategories as $cat){
+                              ?>
+                                <option value="<?php echo $cat['id']?>"><?php echo $cat['name']?></option>
+                                <?php
+                                }
+                                ?>
+                              </select>
+                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Select Class</label>
+                              <select class="form-control" name="classId" id="">
+                                <option>Select Category</option>
+                              <?php
+                              $query = $pdo->query("select * from classes");
+                              $allCategories = $query->fetchAll(PDO::FETCH_ASSOC);
+                              foreach( $allCategories as $cat){
+                              ?>
+                                <option value="<?php echo $cat['id']?>"><?php echo $cat['name']?></option>
+                                <?php
+                                }
+                                ?>
+                              </select>
+                              
+                            </div>
+                            <button name ="addMovies" type="submit" class="btn btn-primary">Add Movie</button>
                         </form>
                     </div>
                 </div>

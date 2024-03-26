@@ -375,7 +375,7 @@ include('header.php');
 			<div class="row isotope-grid">
 
 			<?php
-			$query = $pdo->query("select * from product");
+			$query = $pdo->query("select * from movies");
 			$allProducts = $query->fetchAll(PDO::FETCH_ASSOC);
 			foreach($allProducts as $product){
 				

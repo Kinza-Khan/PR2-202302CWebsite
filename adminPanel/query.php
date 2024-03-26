@@ -2,7 +2,92 @@
 include('dbcon.php');
 session_start();
 
+// add Classes
 
+
+if(isset($_POST['addClass'])){
+    $cName = $_POST['cName'];
+                            $query = $pdo->prepare("insert into classes (name) values(:cName)");
+                            $query->bindParam('cName',$cName);                      
+                            $query->execute();
+                            echo "<script>alert('class added successfully');
+                            location.assign('viewClass.php');
+                            </script>";
+
+    
+
+}
+
+// end classes
+
+
+// add Theater
+if(isset($_POST['addTheater'])){
+    $tName = $_POST['tName'];
+    $taddress = $_POST['taddress'];
+    $tImageName = $_FILES['tImage']['name'];
+    $tImageTmpName = $_FILES['tImage']['tmp_name'];
+    $extension = pathinfo($tImageName,PATHINFO_EXTENSION);
+    $destination = "img/".$tImageName;
+    if($extension == "jpg" || $extension == "png" || $extension == "jpeg" || $extension == "webp" || $extension == "jfif"){
+                if(move_uploaded_file($tImageTmpName,$destination)){
+                            $query = $pdo->prepare("insert into theater (name, address , image) values(:tName , :taddress, :tImage)");
+                            $query->bindParam('tName',$tName);
+                            $query->bindParam('taddress',$taddress);
+                            $query->bindParam('tImage',$tImageName);
+                            $query->execute();
+                            echo "<script>alert('theater added successfully');
+                            location.assign('viewTheater.php');
+                            </script>";
+
+                }
+    }
+ 
+    
+
+}
+// update Theater
+if(isset($_POST['updateTheater'])){
+    $tid = $_GET['tid'];
+    $tName = $_POST['tName'];
+    $taddress = $_POST['taddress'];
+    $query = $pdo->prepare("update theater set name = :tName, address= :taddress where id = :tId ");
+    if(isset($_FILES['tImage'])){
+        $tImageName = $_FILES['tImage']['name'];
+        $tImageTmpName = $_FILES['tImage']['tmp_name'];
+        $extension = pathinfo($tImageName,PATHINFO_EXTENSION);
+        $destination = "img/".$tImageName;
+        if($extension == "jpg" || $extension == "png" || $extension == "jpeg" || $extension == "webp"){
+                    if(move_uploaded_file($tImageTmpName,$destination)){
+                                $query = $pdo->prepare("update theater set name = :tName , address= :taddress, image = :tImage where id = :tId");
+                                $query->bindParam('tImage',$tImageName);
+                               
+                    }   
+        }
+    }
+
+                                $query->bindParam('tId',$tid);
+                                $query->bindParam('tName',$tName);
+                                $query->bindParam('taddress',$taddress);
+                                $query->execute();
+                                echo "<script>alert('theater updated successfully');
+                                location.assign('viewTheater.php');
+                                </script>";
+}
+// end Theater
+//DELETE THEATER
+if(isset($_GET['id'])){
+    $tid=$_GET['id'];
+    $query=$pdo->prepare("delete from theater where id=:id");
+    $query->bindParam('id',$tid);
+    $query->execute();
+    echo "<script>alert('delete theater successfully');
+    location.assign('viewTheater.php');
+    </script>";
+
+}
+
+// end theater
 
 // add cATEGORY
 if(isset($_POST['addCategory'])){
@@ -65,35 +150,40 @@ if(isset($_POST['updateCategory'])){
 }
 
 
-// add Product
-if(isset($_POST['addProduct'])){
+// add movies
+if(isset($_POST['addMovies'])){
     $productName = $_POST['productName'];
     $productPrice = $_POST['productPrice'];
     $productQty = $_POST['productQty'];
     $productDes = $_POST['productDes'];
     $cId = $_POST['cId'];
+    $classId = $_POST['classId'];
+    $tId = $_POST['tId'];
     $productImageName = $_FILES['productImage']['name'];
     $productImageTmpName = $_FILES['productImage']['tmp_name'];
     $extension = pathinfo($productImageName,PATHINFO_EXTENSION);
     $destination = "img/".$productImageName;
     if($extension == "jpeg" || $extension == "png" || $extension == "jpg" || $extension == "webp"){
         if(move_uploaded_file($productImageTmpName,$destination)){
-            $query  = $pdo->prepare("insert into product (name , price, des , qty , image , c_id) values (:pName , :pPrice, :pDes, :pQty , :pImage , :cId)");
+            $query  = $pdo->prepare("insert into movies(name , price, des , qty , image , c_id,class_id,t_id) values (:pName , :pPrice, :pDes, :pQty , :pImage , :cId ,:classId, :tId)");
             $query->bindParam('pName',$productName);
             $query->bindParam('pPrice',$productPrice);
             $query->bindParam('pDes',$productDes);
             $query->bindParam('pQty',$productQty);
             $query->bindParam('pImage',$productImageName);
             $query->bindParam('cId',$cId);
+            $query->bindParam('classId',$classId);
+            $query->bindParam('tId',$tId);
             $query->execute();
-            echo "<script>alert('product added successfully')</script>";
+            echo "<script>alert('movie added successfully')
+            location.assign('viewmovies.php');</script>";
         }
     }
     
 }
 
-// update product
-if(isset($_POST['updateProduct'])){
+// update movies
+if(isset($_POST['updateMovies'])){
     $id = $_GET['id'];
     $pName = $_POST['pName'];
     $pPrice = $_POST['pPrice'];
@@ -129,6 +219,16 @@ if(isset($_POST['updateProduct'])){
                                 location.assign('viewProduct.php');
                                 </script>";
 }
+ // delete movies
+if(isset($_GET['id'])){
+    $mid=$_GET['id'];
+    $query=$pdo->prepare("delete from movies where id=:id");
+    $query->bindParam('id',$mid);
+    $query->execute();
+    echo "<script>alert('delete movies successfully');
+    location.assign('viewMovies.php');
+    </script>";
 
+}
 
 ?>

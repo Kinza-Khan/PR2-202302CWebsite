@@ -58,6 +58,7 @@
                         <span>Admin</span>
                     </div>
                 </div>
+
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
@@ -68,11 +69,30 @@
                            
                         </div>
                     </div>
+                    <div class="navbar-nav w-100">
+                    <a href="addClass.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>classes</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Products</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                            <a href="addClass.php" class="dropdown-item">Add class</a>
+                            <a href="viewClass.php" class="dropdown-item">View class</a>
+                           
+                        </div>
+                    </div>
+                    <div class="navbar-nav w-100">
+                    <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Theaters</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                    <a href="addTheater.php" class="dropdown-item">Add Theater</a>
+                            <a href="viewTheater.php" class="dropdown-item">View Theater</a>
+                           
+                        </div>
+                    </div>
+                    <div class="navbar-nav w-100">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Movie</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="addProduct.php" class="dropdown-item">Add Product</a>
-                            <a href="viewProduct.php" class="dropdown-item">View Product</a>
+                            <a href="addMovies.php" class="dropdown-item">Add Movie</a>
+                            <a href="viewMovies.php" class="dropdown-item">View Movie</a>
                            
                         </div>
                     </div>

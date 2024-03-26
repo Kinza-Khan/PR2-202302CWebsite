@@ -7,7 +7,7 @@
         }
         ?>
         <!-- Sale & Revenue Start -->
-            <div class="container-fluid pt-4 px-4">
+            <!-- <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
@@ -15,9 +15,9 @@
                             <div class="ms-3">
                                 <p class="mb-2">Tatal Sale</p>
                                 <h6 class="mb-0">RS: <?php 
-                                $query = $pdo->query("SELECT SUM(p_price) as 'totalAmount' FROM orders");
-                                $totalPrice =  $query->fetch(PDO::FETCH_ASSOC);
-                                echo $totalPrice['totalAmount'];
+                               // $query = $pdo->query("SELECT SUM(p_price) as 'totalAmount' FROM movies");
+                               // $totalPrice =  $query->fetch(PDO::FETCH_ASSOC);
+                               // echo $totalPrice['totalAmount'];
 
                                 ?></h6>
                             </div>
@@ -29,9 +29,9 @@
                             <div class="ms-3">
                                 <p class="mb-2">Total Products</p>
                                 <h6 class="mb-0"><?php 
-                                $query = $pdo->query("SELECT COUNT(id) as 'totalProducts' FROM product");
-                                $totalProducts =  $query->fetch(PDO::FETCH_ASSOC);
-                                echo $totalProducts['totalProducts'];
+                                //$query = $pdo->query("SELECT COUNT(id) as 'totalProducts' FROM movies");
+                                //$totalProducts =  $query->fetch(PDO::FETCH_ASSOC);
+                                //echo $totalProducts['totalProducts'];
 
                                 ?></h6>
                             </div>
@@ -43,9 +43,9 @@
                             <div class="ms-3">
                                 <p class="mb-2">TodayCategories</p>
                                 <h6 class="mb-0"><?php 
-                                $query = $pdo->query("SELECT COUNT(id) as 'totalCategories' FROM category");
-                                $totalCategories =  $query->fetch(PDO::FETCH_ASSOC);
-                                echo $totalCategories['totalCategories'];
+                               // $query = $pdo->query("SELECT COUNT(id) as 'totalCategories' FROM category");
+                               // $totalCategories =  $query->fetch(PDO::FETCH_ASSOC);
+                               // echo $totalCategories['totalCategories'];
 
                                 ?></h6>
                             </div>
@@ -57,16 +57,16 @@
                             <div class="ms-3">
                                 <p class="mb-2">Total Users</p>
                                 <h6 class="mb-0"><?php 
-                                $query = $pdo->query("SELECT COUNT(id) as 'totalUsers' FROM users");
-                                $totalUsers =  $query->fetch(PDO::FETCH_ASSOC);
-                                echo $totalUsers['totalUsers'];
+                                //$query = $pdo->query("SELECT COUNT(id) as 'totalUsers' FROM users");
+                                //$totalUsers =  $query->fetch(PDO::FETCH_ASSOC);
+                               // echo $totalUsers['totalUsers'];
 
                                 ?></h6>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Sale & Revenue End -->
 
 
@@ -74,7 +74,7 @@
 
 
             <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
+            <!-- <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Recent Salse</h6>
@@ -95,21 +95,21 @@
                             </thead>
                             <tbody>
                                     <?php
-                                    $query = $pdo->query("select * from orders");
-                                     $allOrders = $query->fetchAll(PDO::FETCH_ASSOC);
-                                     foreach( $allOrders as $order){
+                                    // $query = $pdo->query("select * from orders");
+                                    //  $allOrders = $query->fetchAll(PDO::FETCH_ASSOC);
+                                    //  foreach( $allOrders as $order){
                                     ?>
                                 <tr>                                    
-                                    <td><?php echo $order['dateTime']?></td>
-                                    <td><?php echo $order['u_name']?></td>
-                                    <td><?php echo $order['p_name']?></td>
-                                    <td><?php echo $order['p_qty']?></td>
-                                    <td><?php echo $order['p_price']?></td>
-                                    <td><?php  echo $order['status'] ?></td>
+                                    <td><?php //echo $order['dateTime']?></td>
+                                    <td><?php// echo $order['u_name']?></td>
+                                    <td><?php //echo $order['p_name']?></td>
+                                    <td><?php //echo $order['p_qty']?></td>
+                                    <td><?php //echo $order['p_price']?></td>
+                                    <td><?php // echo $order['status'] ?></td>
                                     <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                                 </tr>
                                 <?php
-                            }
+                           // }
                             ?>
 
 
@@ -117,8 +117,8 @@
                         </table>
                     </div>
                 </div>
-            </div>
-            <!-- Recent Sales End -->
+            </div> -->
+           // Recent Sales End
 
 
         
